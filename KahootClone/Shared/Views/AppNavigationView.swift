@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AppNavigationView.swift
 //  KahootClone
 //
 //  Created by Davyd Darusenkov on 17.03.2024.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct AppNavigationView: View {
     @Environment(Router.self) private var router
 
     #if os(iOS)
@@ -25,6 +25,8 @@ struct ContentView: View {
         var macOSLayout: some View {
             HStack(spacing: 0) {
                 NavigationBar()
+                    
+
                 router.activeTab.content
             }
         }
@@ -60,6 +62,6 @@ struct ContentView: View {
 }
 
 #Preview {
-    ContentView()
+    AppNavigationView()
         .environment(Router.shared)
 }
