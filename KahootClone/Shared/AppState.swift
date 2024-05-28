@@ -5,15 +5,23 @@
 //  Created by Davyd Darusenkov on 06.04.2024.
 //
 
-import Foundation
+import Factory
+import Observation
+import SwiftUI
 
 @Observable
 final class AppState {
-    var isAuthenticated = false
+   
+    init() {}
+}
 
-    private init() {
-        let user = AuthenticationService.shared.getAuthenticatedUser()
+extension AppState {
+    static let shared = AppState()
+}
 
-        isAuthenticated = user != nil
+extension Container {
+    var appState: Factory<AppState> {
+        self { AppState() }
+            .singleton
     }
 }

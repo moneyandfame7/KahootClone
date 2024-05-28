@@ -5,11 +5,41 @@
 //  Created by Davyd Darusenkov on 04.04.2024.
 //
 
+import Factory
 import SwiftUI
 
 struct MyAccountScreen: View {
+    @Injected(\.settingsViewModel) private var settingsViewModel
+
     @Environment(Router.self) private var router
     @Environment(\.detectedOS) private var detectedOS
+
+    @ViewBuilder
+    var unauthenticatedAccount: some View {
+        ConditionalStack(
+            horizontally: detectedOS == .macOS,
+            vSpacing: 15,
+            hSpacing: 15,
+            vAlignment: .bottom,
+            hAlignment: .leading
+        ) {
+            VStack(alignment: .leading, spacing: 15) {
+                Text("Sign in for more")
+                    .font(.custom("Montserrat", size: 26))
+                    .fontWeight(.bold)
+                    .foregroundStyle(.textPrimary)
+
+                Text("Create and save kahoots, and access more features with a Kahoot! account.")
+                    .font(.custom("Montserrat", size: 16))
+                    .fontWeight(.medium)
+                    .foregroundStyle(.textSecondary)
+            }
+            AuthenticationButtons()
+        }
+        .padding(25)
+        .background(.surfaceMain)
+    }
+
     var body: some View {
         VStack(spacing: 0) {
             HStack {
@@ -40,36 +70,9 @@ struct MyAccountScreen: View {
             .background(.ultraThinMaterial)
 
             ScrollView {
-                ConditionalStack(
-                    horizontally: detectedOS == .macOS,
-                    vSpacing: 15,
-                    hSpacing: 15,
-                    vAlignment: .bottom,
-                    hAlignment: .leading
-                ) {
-                    VStack(alignment: .leading, spacing: 15) {
-                        Text("Sign in for more")
-                            .font(.custom("Montserrat", size: 26))
-                            .fontWeight(.bold)
-                            .foregroundStyle(.textPrimary)
-
-                        Text("Create and save kahoots, and access more features with a Kahoot! account.")
-                            .font(.custom("Montserrat", size: 16))
-                            .fontWeight(.medium)
-                            .foregroundStyle(.textSecondary)
-                    }
-                    HStack(spacing: 25) {
-                        ButtonPrimary(title: "Sign in", variant: .background, fullWidth: true) {
-                            router.navigate(to: .authentication(variant: .signIn))
-                        }
-
-                        ButtonPrimary(title: "Sign up", fullWidth: true) {
-                            router.navigate(to: .authentication(variant: .signUp))
-                        }
-                    }
+                if !settingsViewModel.isAuthenticated {
+                    unauthenticatedAccount
                 }
-                .padding(25)
-                .background(.surfaceMain)
                 VStack {}
                     .frame(maxWidth: .infinity, maxHeight: .infinity)
                     .background(.red)

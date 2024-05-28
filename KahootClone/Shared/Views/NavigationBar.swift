@@ -6,8 +6,11 @@
 //
 
 import SwiftUI
+import Factory
 
 struct NavigationBar: View {
+    @Injected(\.settingsViewModel) private var settingsViewModel
+    
     @Environment(Router.self) private var router
     @Environment(\.colorScheme) var colorScheme
 
@@ -50,32 +53,38 @@ struct NavigationBar: View {
                 .frame(maxWidth: .infinity)
                 Spacer()
 
-                HStack {
-                    Image(systemName: "person.circle.fill")
-                        .imageScale(.large)
-                    #if os(macOS)
-                        .fontWeight(.semibold)
-                    #else
-                        .fontWeight(.medium)
-                    #endif
-                        .foregroundStyle(.textSecondary)
-                    Text("Your profile")
-                        .font(.custom("Montserrat", size: 14))
-                        .fontWeight(.bold)
-                        .foregroundStyle(.textPrimary)
-                    Image(systemName: "arrow.forward")
-                    #if os(macOS)
-                        .fontWeight(.semibold)
-                    #else
-                        .fontWeight(.medium)
-                    #endif
-                        .foregroundStyle(.textSecondary)
-                }
-                .padding(.horizontal, 6)
-                .padding(.vertical, 4)
-                .contentShape(.rect)
-                .onTapGesture {
-                    router.navigate(to: .myAccount)
+                VStack(spacing: 10) {
+                    HStack {
+                        Image(systemName: "person.circle.fill")
+                            .imageScale(.large)
+                        #if os(macOS)
+                            .fontWeight(.semibold)
+                        #else
+                            .fontWeight(.medium)
+                        #endif
+                            .foregroundStyle(.textSecondary)
+                        Text("Your profile")
+                            .font(.custom("Montserrat", size: 14))
+                            .fontWeight(.bold)
+                            .foregroundStyle(.textPrimary)
+                        Image(systemName: "arrow.forward")
+                        #if os(macOS)
+                            .fontWeight(.semibold)
+                        #else
+                            .fontWeight(.medium)
+                        #endif
+                            .foregroundStyle(.textSecondary)
+                    }
+                    .padding(.horizontal, 6)
+                    .padding(.vertical, 4)
+                    .contentShape(.rect)
+                    .onTapGesture {
+                        router.navigate(to: .myAccount)
+                    }
+
+                    if !settingsViewModel.isAuthenticated {
+                        AuthenticationButtons(size: .small)
+                    }
                 }
             }
 
@@ -177,5 +186,6 @@ struct NavigationBarItem: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
     }
+    .environment(AppState.shared)
     .environment(Router.shared)
 }

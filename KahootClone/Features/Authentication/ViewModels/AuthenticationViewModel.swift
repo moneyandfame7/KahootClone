@@ -5,6 +5,7 @@
 //  Created by Davyd Darusenkov on 05.04.2024.
 //
 
+import Factory
 import SwiftUI
 
 enum AuthenticationVariant: String {
@@ -12,10 +13,15 @@ enum AuthenticationVariant: String {
     case signUp = "Sign up"
 }
 
+// TODO: переробити якось це, тут тримати готово юзера, а не username, email, password і т.д
 @Observable final class AuthenticationViewModel {
-    var variant: AuthenticationVariant
+    @ObservationIgnored
+    @Injected(\.authenticationService) var authenticationService
 
-    var signUpStage: SignUpStage = .username
+    @ObservationIgnored
+    @Injected(\.settingsViewModel) var settingsViewModel
+
+    var variant: AuthenticationVariant
 
     var username = ""
     var email = ""
@@ -32,10 +38,13 @@ enum AuthenticationVariant: String {
             do {
                 error = ""
                 isLoading = true
-                let user = try await AuthenticationService.shared.signIn(withEmail: email, password: password)
-                
+                let user = try await authenticationService.signIn(withEmail: email, password: password)
+
                 isLoading = false
                 print("User: ", user)
+                settingsViewModel.isAuthenticated = true
+                
+                completion()
             } catch {
                 self.error = error.localizedDescription
                 isLoading = false
@@ -48,10 +57,11 @@ enum AuthenticationVariant: String {
             do {
                 error = ""
                 isLoading = true
-                let user = try await AuthenticationService.shared.signUp(email: email, password: password)
+                let user = try await authenticationService.signUp(email: email, password: password)
 
                 isLoading = false
                 print("User: ", user)
+                settingsViewModel.isAuthenticated = true
 
                 completion()
             } catch {
@@ -59,5 +69,11 @@ enum AuthenticationVariant: String {
                 isLoading = false
             }
         }
+    }
+
+    func reset() {
+        email = ""
+        password = ""
+        error = ""
     }
 }
