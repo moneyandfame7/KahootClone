@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		160798F02BA787C500672850 /* NavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160798EF2BA787C500672850 /* NavigationBar.swift */; };
-		162D0DF12BC08CE300ADA431 /* CreateUsernameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 162D0DF02BC08CE300ADA431 /* CreateUsernameView.swift */; };
 		1635B9542BBEE91100E1E9C5 /* CategoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1635B9532BBEE91100E1E9C5 /* CategoryScreen.swift */; };
 		1635B9572BBF19A100E1E9C5 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 1635B9562BBF19A100E1E9C5 /* FirebaseAuth */; };
 		1635B95E2BBF252100E1E9C5 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1635B95D2BBF252100E1E9C5 /* AuthenticationService.swift */; };
@@ -41,12 +40,15 @@
 		1659629B2BA77E000041D9AE /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659629A2BA77E000041D9AE /* Router.swift */; };
 		1668B6CC2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B6CB2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift */; };
 		1668B6CF2BBEA4A40075E7C6 /* ConditionalStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1668B6CE2BBEA4A40075E7C6 /* ConditionalStack.swift */; };
+		1672A5942BE6199900F64B6D /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 1672A5932BE6199900F64B6D /* Factory */; };
+		1672A5962BE64FE300F64B6D /* AuthenticationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A5952BE64FE300F64B6D /* AuthenticationButtons.swift */; };
 		168DA87E2BC109D100CE728E /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 168DA87D2BC109D100CE728E /* AppState.swift */; };
+		16FFA8352BFDD8C80034A137 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFA8342BFDD8C80034A137 /* JoinView.swift */; };
+		16FFA8372BFDDB070034A137 /* ButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFA8362BFDDB070034A137 /* ButtonIcon.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		160798EF2BA787C500672850 /* NavigationBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBar.swift; sourceTree = "<group>"; };
-		162D0DF02BC08CE300ADA431 /* CreateUsernameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUsernameView.swift; sourceTree = "<group>"; };
 		1635B9532BBEE91100E1E9C5 /* CategoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreen.swift; sourceTree = "<group>"; };
 		1635B95D2BBF252100E1E9C5 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		1635B95F2BBF2A7400E1E9C5 /* MyAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountScreen.swift; sourceTree = "<group>"; };
@@ -79,7 +81,10 @@
 		1659629A2BA77E000041D9AE /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		1668B6CB2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEnvironmentKeys.swift; sourceTree = "<group>"; };
 		1668B6CE2BBEA4A40075E7C6 /* ConditionalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStack.swift; sourceTree = "<group>"; };
+		1672A5952BE64FE300F64B6D /* AuthenticationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationButtons.swift; sourceTree = "<group>"; };
 		168DA87D2BC109D100CE728E /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		16FFA8342BFDD8C80034A137 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
+		16FFA8362BFDDB070034A137 /* ButtonIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +95,7 @@
 				165962522BA6F14D0041D9AE /* FirebaseAnalyticsSwift in Frameworks */,
 				1635B9572BBF19A100E1E9C5 /* FirebaseAuth in Frameworks */,
 				1659624E2BA6F14D0041D9AE /* FirebaseAnalytics in Frameworks */,
+				1672A5942BE6199900F64B6D /* Factory in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,7 +200,7 @@
 			isa = PBXGroup;
 			children = (
 				16570D982BBFFC420069B11D /* AuthenticationForm.swift */,
-				162D0DF02BC08CE300ADA431 /* CreateUsernameView.swift */,
+				1672A5952BE64FE300F64B6D /* AuthenticationButtons.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -288,6 +294,7 @@
 		165962412BA6EBA60041D9AE /* QuizManagement */ = {
 			isa = PBXGroup;
 			children = (
+				16FFA8332BFDD8B80034A137 /* Views */,
 				165962942BA71BD40041D9AE /* Models */,
 			);
 			path = QuizManagement;
@@ -302,6 +309,7 @@
 				165962972BA765650041D9AE /* BottomSheet.swift */,
 				160798EF2BA787C500672850 /* NavigationBar.swift */,
 				1668B6CE2BBEA4A40075E7C6 /* ConditionalStack.swift */,
+				16FFA8362BFDDB070034A137 /* ButtonIcon.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -369,6 +377,14 @@
 			path = Other;
 			sourceTree = "<group>";
 		};
+		16FFA8332BFDD8B80034A137 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				16FFA8342BFDD8C80034A137 /* JoinView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -389,6 +405,7 @@
 				1659624D2BA6F14D0041D9AE /* FirebaseAnalytics */,
 				165962512BA6F14D0041D9AE /* FirebaseAnalyticsSwift */,
 				1635B9562BBF19A100E1E9C5 /* FirebaseAuth */,
+				1672A5932BE6199900F64B6D /* Factory */,
 			);
 			productName = KahootClone;
 			productReference = 165962282BA6E7700041D9AE /* KahootClone.app */;
@@ -420,6 +437,7 @@
 			mainGroup = 1659621F2BA6E7700041D9AE;
 			packageReferences = (
 				1659624C2BA6F14D0041D9AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				1672A5922BE6199900F64B6D /* XCRemoteSwiftPackageReference "Factory" */,
 			);
 			productRefGroup = 165962292BA6E7700041D9AE /* Products */;
 			projectDirPath = "";
@@ -469,14 +487,16 @@
 				1668B6CC2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift in Sources */,
 				16570D9B2BBFFD3B0069B11D /* SignInScreen.swift in Sources */,
 				1635B9602BBF2A7400E1E9C5 /* MyAccountScreen.swift in Sources */,
-				162D0DF12BC08CE300ADA431 /* CreateUsernameView.swift in Sources */,
+				16FFA8352BFDD8C80034A137 /* JoinView.swift in Sources */,
 				16570D992BBFFC420069B11D /* AuthenticationForm.swift in Sources */,
 				168DA87E2BC109D100CE728E /* AppState.swift in Sources */,
 				1635B95E2BBF252100E1E9C5 /* AuthenticationService.swift in Sources */,
 				1635B9542BBEE91100E1E9C5 /* CategoryScreen.swift in Sources */,
 				160798F02BA787C500672850 /* NavigationBar.swift in Sources */,
+				16FFA8372BFDDB070034A137 /* ButtonIcon.swift in Sources */,
 				165962912BA719F40041D9AE /* LayoutSectionView.swift in Sources */,
 				163AAAE62BC14A20003BCCF5 /* KCTextFieldStyle.swift in Sources */,
+				1672A5962BE64FE300F64B6D /* AuthenticationButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -707,6 +727,14 @@
 				minimumVersion = 10.22.1;
 			};
 		};
+		1672A5922BE6199900F64B6D /* XCRemoteSwiftPackageReference "Factory" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/hmlongco/Factory";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.3.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -724,6 +752,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 1659624C2BA6F14D0041D9AE /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
 			productName = FirebaseAnalyticsSwift;
+		};
+		1672A5932BE6199900F64B6D /* Factory */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 1672A5922BE6199900F64B6D /* XCRemoteSwiftPackageReference "Factory" */;
+			productName = Factory;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

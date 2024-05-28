@@ -11,6 +11,7 @@ import SwiftUI
 @main
 struct Application: App {
     @State private var router = Router()
+    @State private var appState = AppState()
     init() {
         FirebaseApp.configure()
     }
@@ -23,6 +24,7 @@ struct Application: App {
             #endif
         }
         .environment(router)
+        .environment(appState)
         #if os(macOS)
         .defaultSize(width: 1000, height: 650)
         .windowStyle(.hiddenTitleBar)

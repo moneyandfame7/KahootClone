@@ -11,6 +11,7 @@ struct ButtonPrimaryStyle: ButtonStyle {
     @Environment(\.isEnabled) private var isEnabled
     @Environment(\.colorScheme) private var colorScheme
 
+    var size: ButtonSize
     var variant: ButtonVariant
     var fullWidth = false
     var pressed = false
@@ -18,8 +19,10 @@ struct ButtonPrimaryStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(maxWidth: fullWidth ? .infinity : nil)
-            .padding(.horizontal, 20)
-            .padding(.vertical, 10)
+            .padding(.horizontal, size.paddingHorizontal)
+            .padding(.vertical, size.paddingVertical)
+            .font(.custom("Montserrat", size: size.fontSize))
+            .fontWeight(size.fontWeight)
             .background(
                 ZStack {
                     RoundedRectangle(cornerRadius: 6)
@@ -90,10 +93,52 @@ enum ButtonVariant {
     }
 }
 
+enum ButtonSize {
+    case small, `default`, large
+
+    var paddingVertical: CGFloat {
+        switch self {
+        case .small:
+            return 5
+        case .default:
+            return 10
+        case .large:
+            return 15
+        }
+    }
+
+    var paddingHorizontal: CGFloat {
+        switch self {
+        case .small:
+            return 10
+        case .default:
+            return 20
+        case .large:
+            return 25
+        }
+    }
+
+    var fontSize: CGFloat {
+        switch self {
+        case .small:
+            return 12
+        case .default:
+            return 16
+        case .large:
+            return 18
+        }
+    }
+
+    var fontWeight: Font.Weight {
+        return .bold
+    }
+}
+
 struct ButtonPrimary: View {
     var title: String?
     var icon: String?
 
+    var size: ButtonSize = .default
     var variant: ButtonVariant = .primary
     var fullWidth = false
     var disabled = false
@@ -143,9 +188,12 @@ struct ButtonPrimary: View {
                 }
             }
         }
-        .font(.custom("Montserrat", size: 16))
-        .fontWeight(.bold)
-        .buttonStyle(ButtonPrimaryStyle(variant: variant, fullWidth: fullWidth, pressed: pressed))
+        .buttonStyle(ButtonPrimaryStyle(
+            size: size,
+            variant: variant,
+            fullWidth: fullWidth,
+            pressed: pressed
+        ))
         .disabled(isLoading)
     }
 }
@@ -162,10 +210,11 @@ struct ButtonPrimary: View {
 
         ButtonPrimary(title: "Hui.", variant: .red, fullWidth: true, action: {})
 
-        ButtonPrimary(title: "Hui.", variant: .violet, action: {})
+        ButtonPrimary(title: "Hui.", size: .small, variant: .violet, action: {})
 
         ButtonPrimary(
             title: "Hui.",
+            size: .small,
             variant: .violet,
             isLoading: true,
             loadingTitle: "Loading...",

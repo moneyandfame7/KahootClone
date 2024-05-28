@@ -42,6 +42,7 @@ struct ContentView: View {
                 #endif
             }
             .withAppRouter()
+            .withSheetDestination(destination: $router.presentedSheet)
             .bottomSheet(item: $router.presentedBottomSheet, onDismiss: {}) { destination in
                 switch destination {
                 case .createQuiz:

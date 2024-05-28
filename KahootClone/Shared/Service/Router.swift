@@ -31,17 +31,12 @@ extension View {
         }
     }
 
-    func withBottomSheetDestination(destination: Binding<BottomSheetDestination?>) -> some View {
-        VStack {}
-    }
-
     func withSheetDestination(destination: Binding<SheetDestination?>) -> some View {
         sheet(item: destination) { destination in
             switch destination {
             case .join:
-                VStack {
-                    Text("Join")
-                }
+                JoinView()
+
             case .createFromScratch:
                 VStack {
                     Text("Create")

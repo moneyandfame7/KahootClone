@@ -34,6 +34,7 @@ struct AuthenticationScreen: View {
 
                 Spacer()
                 ButtonPrimary(title: variant == .signIn ? "Sign up" : "Sign in", variant: .surface) {
+                    vm.reset()
                     withAnimation {
                         variant = variant == .signIn ? .signUp : .signIn
                     }

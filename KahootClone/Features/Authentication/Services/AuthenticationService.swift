@@ -5,6 +5,7 @@
 //  Created by Davyd Darusenkov on 04.04.2024.
 //
 
+import Factory
 import FirebaseAuth
 import Foundation
 
@@ -44,7 +45,7 @@ extension AuthErrorCode.Code {
 }
 
 final class AuthenticationService {
-    private init() {}
+    init() {}
 
     func getAuthenticatedUser() -> AuthenticationUser? {
         guard let user = Auth.auth().currentUser else {
@@ -73,4 +74,13 @@ final class AuthenticationService {
 
 extension AuthenticationService {
     static let shared = AuthenticationService()
+}
+
+// Factory DI
+
+extension Container {
+    var authenticationService: Factory<AuthenticationService> {
+        self { AuthenticationService() }
+            .singleton
+    }
 }
