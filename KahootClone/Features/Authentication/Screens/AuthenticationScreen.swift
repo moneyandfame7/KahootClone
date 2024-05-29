@@ -31,7 +31,9 @@ struct AuthenticationScreen: View {
                         .fontWeight(.bold)
                 }
                 .buttonStyle(.plain)
-
+                Button(action: vm.test) {
+                    Text("TEST HUEST EPTA")
+                }
                 Spacer()
                 ButtonPrimary(title: variant == .signIn ? "Sign up" : "Sign in", variant: .surface) {
                     vm.reset()

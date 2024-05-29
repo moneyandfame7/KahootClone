@@ -27,18 +27,10 @@ final class SettingsViewModel {
 
     func signOut() {
         do {
-            try authenticationService.signOut()
+//            try authenticationService.signOut()
             isAuthenticated = false
         } catch {
             Self.logger.error("Sign Out: \(error.localizedDescription)")
         }
-    }
-}
-
-// Factory Dependency Injection
-extension Container {
-    var settingsViewModel: Factory<SettingsViewModel> {
-        self { SettingsViewModel() }
-            .singleton
     }
 }

@@ -186,6 +186,5 @@ struct NavigationBarItem: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
     }
-    .environment(AppState.shared)
     .environment(Router.shared)
 }

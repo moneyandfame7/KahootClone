@@ -33,17 +33,27 @@ enum AuthenticationVariant: String {
         self.variant = variant
     }
 
+    func test() {
+        Task { @MainActor in
+            do {
+                try await authenticationService.helloWorld()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
     func signIn(completion: @escaping () -> Void) {
         Task { @MainActor in
             do {
                 error = ""
                 isLoading = true
-                let user = try await authenticationService.signIn(withEmail: email, password: password)
+//                let user = try await authenticationService.signIn(withEmail: email, password: password)
 
                 isLoading = false
-                print("User: ", user)
-                settingsViewModel.isAuthenticated = true
                 
+                settingsViewModel.isAuthenticated = true
+
                 completion()
             } catch {
                 self.error = error.localizedDescription
@@ -57,10 +67,10 @@ enum AuthenticationVariant: String {
             do {
                 error = ""
                 isLoading = true
-                let user = try await authenticationService.signUp(email: email, password: password)
+//                let user = try await authenticationService.signUp(email: email, password: password)
 
                 isLoading = false
-                print("User: ", user)
+//                print("User: ", user)
                 settingsViewModel.isAuthenticated = true
 
                 completion()
