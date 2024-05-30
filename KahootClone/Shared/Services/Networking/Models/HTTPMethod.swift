@@ -8,8 +8,8 @@
 import Foundation
 
 enum HTTPMethod {
-    case get([URLQueryItem])
-    case post(Encodable?)
+    case get([URLQueryItem] = [])
+    case post(Encodable? = nil)
     case delete
 
     var name: String {

@@ -5,11 +5,12 @@
 //  Created by Davyd Darusenkov on 04.05.2024.
 //
 
+import Factory
 import SwiftUI
 
 struct AuthenticationButtons: View {
     var size: ButtonSize = .small
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     var body: some View {
         HStack(spacing: size == .small ? 10 : 25) {
@@ -27,7 +28,6 @@ struct AuthenticationButtons: View {
 #Preview {
     VStack {
         AuthenticationButtons()
-            .environment(Router.shared)
     }
     .frame(width: 250, height: 100)
 }

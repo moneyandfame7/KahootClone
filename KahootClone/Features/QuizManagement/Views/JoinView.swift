@@ -5,6 +5,7 @@
 //  Created by Davyd Darusenkov on 22.05.2024.
 //
 
+import Factory
 import SwiftUI
 
 private enum Field: Int, Hashable {
@@ -12,7 +13,7 @@ private enum Field: Int, Hashable {
 }
 
 struct JoinView: View {
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
     @Environment(\.dismiss) private var dismiss
     @FocusState private var focusedField: Field?
 
@@ -155,5 +156,4 @@ struct JoinView: View {
 
 #Preview {
     JoinView()
-        .environment(Router.shared)
 }

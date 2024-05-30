@@ -11,7 +11,8 @@ import Factory
 struct NavigationBar: View {
     @Injected(\.settingsViewModel) private var settingsViewModel
     
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
+    
     @Environment(\.colorScheme) var colorScheme
 
     #if os(iOS)
@@ -116,7 +117,7 @@ struct NavigationBar: View {
 struct NavigationBarItem: View {
     @Environment(\.detectedOS) var detectedOS
 
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     #if os(macOS)
         @State private var hovering = false
@@ -186,5 +187,4 @@ struct NavigationBarItem: View {
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(.white)
     }
-    .environment(Router.shared)
 }

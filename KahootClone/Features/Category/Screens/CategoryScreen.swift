@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Factory
 
 struct CategoryScreen: View {
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     let category: QuizCategory
 
@@ -31,6 +32,5 @@ struct CategoryScreen: View {
 
 #Preview {
     CategoryScreen(category: .History)
-        .environment(Router.shared)
         .frame(minWidth: 400, minHeight: 400)
 }

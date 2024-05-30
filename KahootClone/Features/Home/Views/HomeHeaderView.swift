@@ -7,9 +7,10 @@
 
 #if os(iOS)
     import SwiftUI
+    import Factory
 
     struct HomeHeaderView: View {
-        @Environment(Router.self) private var router
+        @Injected(\.router) private var router
         @Environment(\.colorScheme) var colorScheme
 
         var body: some View {
@@ -55,6 +56,5 @@
 
     #Preview {
         HomeHeaderView()
-            .environment(Router.shared)
     }
 #endif

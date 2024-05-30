@@ -5,10 +5,11 @@
 //  Created by Davyd Darusenkov on 17.03.2024.
 //
 
+import Factory
 import SwiftUI
 
 struct HomeScreen: View {
-    @Environment(Router.self) var router
+    @Injected(\.router) private var router
 
     @ViewBuilder
     var yourKahootsSection: some View {
@@ -102,5 +103,4 @@ struct HomeScreen: View {
 
 #Preview {
     HomeScreen()
-        .environment(Router.shared)
 }

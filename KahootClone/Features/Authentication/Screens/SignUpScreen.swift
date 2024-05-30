@@ -5,10 +5,11 @@
 //  Created by Davyd Darusenkov on 05.04.2024.
 //
 
+import Factory
 import SwiftUI
 
 struct SignUpScreen: View {
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     @Environment(AuthenticationViewModel.self) private var vm
     var body: some View {
@@ -35,6 +36,5 @@ struct SignUpScreen: View {
 
 #Preview {
     SignUpScreen()
-        .environment(Router.shared)
         .environment(AuthenticationViewModel(variant: .signUp))
 }

@@ -5,10 +5,11 @@
 //  Created by Davyd Darusenkov on 17.03.2024.
 //
 
+import Factory
 import SwiftUI
 
 struct ContentView: View {
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     #if os(iOS)
         @ViewBuilder
@@ -62,5 +63,4 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
-        .environment(Router.shared)
 }

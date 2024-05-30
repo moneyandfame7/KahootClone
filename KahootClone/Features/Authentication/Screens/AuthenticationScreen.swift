@@ -5,11 +5,11 @@
 //  Created by Davyd Darusenkov on 05.04.2024.
 //
 
+import Factory
 import SwiftUI
 
-
 struct AuthenticationScreen: View {
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     @State private var vm: AuthenticationViewModel
 
@@ -70,6 +70,7 @@ struct AuthenticationScreen: View {
 }
 
 #Preview {
-    AuthenticationScreen(variant: .signIn)
-        .environment(Router.shared)
+    _ = Container.shared.authenticationService.register { AuthenticationServiceMock()
+    }
+    return AuthenticationScreen(variant: .signIn)
 }

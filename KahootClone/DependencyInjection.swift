@@ -12,7 +12,7 @@ import Foundation
 
 extension Container {
     var httpClient: Factory<HTTPClient> {
-        self { HTTPClient() }.singleton
+        self { HTTPClient(baseUrl: "http://localhost:3000") }.singleton
     }
 
     var router: Factory<Router> {
@@ -23,7 +23,7 @@ extension Container {
 // MARK: Services
 
 extension Container {
-    var authenticationService: Factory<AuthenticationService> {
+    var authenticationService: Factory<Authentication> {
         self { AuthenticationService() }.singleton
     }
 }

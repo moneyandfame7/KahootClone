@@ -6,10 +6,11 @@
 //
 
 import SwiftUI
+import Factory
 
 @main
 struct Application: App {
-    @State private var router = Router()
+    @Injected(\.router) private var router
     
 
     var body: some Scene {
@@ -19,7 +20,6 @@ struct Application: App {
                 .frame(minWidth: 800, maxWidth: .infinity, minHeight: 500, maxHeight: .infinity)
             #endif
         }
-        .environment(router)
         #if os(macOS)
         .defaultSize(width: 1000, height: 650)
         .windowStyle(.hiddenTitleBar)

@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import Factory
 
 struct SettingsScreen: View {
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     @State private var vm = SettingsViewModel()
 
@@ -73,5 +74,4 @@ struct SettingsScreen: View {
 
 #Preview {
     SettingsScreen()
-        .environment(Router.shared)
 }

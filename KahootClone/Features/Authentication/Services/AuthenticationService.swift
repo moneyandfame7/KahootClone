@@ -8,19 +8,56 @@
 import Factory
 import Foundation
 
-final class AuthenticationService {
+protocol Authentication {
+    func helloWorld() async throws -> NoResponse
+
+    func helloHui() -> Void
+}
+
+final class AuthenticationService: Authentication {
     @Injected(\.httpClient) private var httpClient
     init() {}
 
     func helloWorld() async throws -> NoResponse {
-        let params = ["username": "12345678", "password": "password"]
+        print("HELLO_WORLD <REAL>")
+        let endpoint = Api.Common.helloWorld(username: "12345678", password: "password")
+        let request: Request = endpoint.createRequest()
 
-        let resource = Request<NoResponse>(
-            url: "http://localhost:3000/hello-world",
-            method: .post(params)
-        )
-        let response = try await httpClient.makeRequest(resource)
+        let response: NoResponse = try await httpClient.makeRequest(request)
 
         return response
+    }
+
+    func helloHui() {
+        print("<REAL> AUTH_HUI")
+    }
+
+    func login(username: String, password: String) async throws {
+        let endpoint = Api.Auth.login(username: username, password: password)
+        let request: Request = endpoint.createRequest()
+
+        let response: AuthResponse = try await httpClient.makeRequest(request)
+        
+        print("ACCESS_TOKEN:", response.tokens.accessToken)
+    }
+
+    func signUp(email: String, username: String, password: String) async throws {
+        let endpoint = Api.Auth.signup(email: email, username: username, password: password)
+        let request: Request = endpoint.createRequest()
+
+        let response: AuthResponse = try await httpClient.makeRequest(request)
+
+        print("ACCESS_TOKEN:", response.tokens.accessToken)
+    }
+}
+
+final class AuthenticationServiceMock: Authentication {
+    func helloWorld() async throws -> NoResponse {
+        print("HELLO_WORLD <MOCK>")
+        return NoResponse()
+    }
+
+    func helloHui() {
+        print("<MOCK> AUTH_HUI")
     }
 }

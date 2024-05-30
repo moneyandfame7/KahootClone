@@ -5,18 +5,17 @@
 //  Created by Davyd Darusenkov on 05.04.2024.
 //
 
+import Factory
 import SwiftUI
 
 struct SignInScreen: View {
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     @Environment(AuthenticationViewModel.self) private var vm
-    
-    
 
     var body: some View {
         @Bindable var vm = vm
-        
+
         AuthenticationForm(
             variant: .signIn,
             email: $vm.email,
@@ -33,6 +32,5 @@ struct SignInScreen: View {
 
 #Preview {
     SignInScreen()
-        .environment(Router.shared)
         .environment(AuthenticationViewModel(variant: .signIn))
 }

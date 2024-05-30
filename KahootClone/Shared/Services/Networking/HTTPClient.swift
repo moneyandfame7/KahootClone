@@ -8,12 +8,15 @@
 import Foundation
 
 final class HTTPClient {
+    let baseUrl: String
+    
     private let session: URLSession
 
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
 
-    init() {
+    init(baseUrl: String) {
+        self.baseUrl = baseUrl
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Content-Type": "application/json"]
 
@@ -22,7 +25,7 @@ final class HTTPClient {
         encoder = JSONEncoder()
     }
 
-    func makeRequest<T: Codable>(_ request: Request<T>) async throws -> T {
+    func makeRequest<Response: Codable>(_ request: Request) async throws -> Response {
         let urlRequest = try prepareUrlRequest(for: request)
 
         let (data, response) = try await session.data(for: urlRequest)
@@ -32,12 +35,14 @@ final class HTTPClient {
         return try decode(data)
     }
 
-    private func prepareUrlRequest<T>(for request: Request<T>) throws -> URLRequest {
-        var urlRequest = URLRequest(url: request.url)
+    private func prepareUrlRequest(for request: Request) throws -> URLRequest {
+        let fullUrlString = URL(string: baseUrl + request.path)!
+        
+        var urlRequest = URLRequest(url: fullUrlString)
 
         switch request.method {
         case let .get(queryItems):
-            var components = URLComponents(url: request.url, resolvingAgainstBaseURL: false)
+            var components = URLComponents(url: fullUrlString, resolvingAgainstBaseURL: false)
             components?.queryItems = queryItems
             guard let url = components?.url else {
                 throw NetworkError.badRequest

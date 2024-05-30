@@ -11,7 +11,8 @@ import SwiftUI
 struct MyAccountScreen: View {
     @Injected(\.settingsViewModel) private var settingsViewModel
 
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
+    
     @Environment(\.detectedOS) private var detectedOS
 
     @ViewBuilder
@@ -86,5 +87,4 @@ struct MyAccountScreen: View {
 
 #Preview {
     MyAccountScreen()
-        .environment(Router.shared)
 }

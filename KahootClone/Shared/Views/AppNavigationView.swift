@@ -5,10 +5,11 @@
 //  Created by Davyd Darusenkov on 17.03.2024.
 //
 
+import Factory
 import SwiftUI
 
 struct AppNavigationView: View {
-    @Environment(Router.self) private var router
+    @Injected(\.router) private var router
 
     #if os(iOS)
         @ViewBuilder
@@ -25,7 +26,6 @@ struct AppNavigationView: View {
         var macOSLayout: some View {
             HStack(spacing: 0) {
                 NavigationBar()
-                    
 
                 router.activeTab.content
             }
@@ -63,5 +63,4 @@ struct AppNavigationView: View {
 
 #Preview {
     AppNavigationView()
-        .environment(Router.shared)
 }
