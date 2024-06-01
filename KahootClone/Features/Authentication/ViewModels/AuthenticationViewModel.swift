@@ -16,10 +16,10 @@ enum AuthenticationVariant: String {
 // TODO: переробити якось це, тут тримати готово юзера, а не username, email, password і т.д
 @Observable final class AuthenticationViewModel {
     @ObservationIgnored
-    @Injected(\.authenticationService) var authenticationService
+    @Injected(\.appState) var appState
 
     @ObservationIgnored
-    @Injected(\.settingsViewModel) var settingsViewModel
+    @Injected(\.authenticationService) var authenticationService
 
     var variant: AuthenticationVariant
 
@@ -33,10 +33,10 @@ enum AuthenticationVariant: String {
         self.variant = variant
     }
 
-    func test() {
+    func protectedRoute() {
         Task { @MainActor in
             do {
-                try await authenticationService.helloWorld()
+                try await authenticationService.protectedRoute()
             } catch {
                 print(error.localizedDescription)
             }
@@ -51,8 +51,6 @@ enum AuthenticationVariant: String {
 //                let user = try await authenticationService.signIn(withEmail: email, password: password)
 
                 isLoading = false
-                
-                settingsViewModel.isAuthenticated = true
 
                 completion()
             } catch {
@@ -67,11 +65,18 @@ enum AuthenticationVariant: String {
             do {
                 error = ""
                 isLoading = true
-//                let user = try await authenticationService.signUp(email: email, password: password)
+
+                let result = try await authenticationService.signUp(
+                    email: email,
+                    username: username,
+                    password: password
+                )
+
+                print("AUTH_RESPONSE: ", result)
+
+                appState.persistCredentials(tokens: result.tokens, user: result.user)
 
                 isLoading = false
-//                print("User: ", user)
-                settingsViewModel.isAuthenticated = true
 
                 completion()
             } catch {

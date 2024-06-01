@@ -5,30 +5,40 @@
 //  Created by Davyd Darusenkov on 05.04.2024.
 //
 
+import Factory
 import SwiftUI
 
 // в action передавати AuthInfo чи шось таке
 struct AuthenticationForm: View {
-    let variant: AuthenticationVariant
+    @Injected(\.router) private var router
 
-    @Binding var email: String
-    @Binding var password: String
+    @Bindable var vm: AuthenticationViewModel
 
-    @Binding var error: String
-
-    var isLoading = false
-
-    var action: () -> Void
+    private func action() {
+        if vm.variant == .signIn {
+            vm.signIn {
+                router.navigateToRoot()
+            }
+        } else {
+            vm.signUp {
+                router.navigateToRoot()
+            }
+        }
+    }
 
     var body: some View {
         VStack {
-            Text(variant.rawValue)
+            Text(vm.variant.rawValue)
                 .font(.custom("Montserrat", size: 24))
                 .fontWeight(.bold)
                 .foregroundStyle(.white)
 
             VStack {
-                TextField("Email", text: $email)
+                if vm.variant == .signUp {
+                    TextField("Username", text: $vm.username)
+                        .textFieldStyle(KCTextFieldStyle())
+                }
+                TextField("Email", text: $vm.email)
                     .textFieldStyle(KCTextFieldStyle())
                 #if os(iOS)
                     .keyboardType(.emailAddress)
@@ -37,10 +47,10 @@ struct AuthenticationForm: View {
                     .autocorrectionDisabled()
                     .textContentType(.emailAddress)
 
-                SecureField("Password", text: $password)
+                SecureField("Password", text: $vm.password)
                     .textFieldStyle(KCTextFieldStyle())
-                if !error.isEmpty {
-                    Text(error)
+                if !vm.error.isEmpty {
+                    Text(vm.error)
                         .multilineTextAlignment(.leading)
                         .foregroundStyle(.redMain)
                         .padding(.top)
@@ -48,10 +58,10 @@ struct AuthenticationForm: View {
                 Spacer().frame(height: 50)
 
                 ButtonPrimary(
-                    title: variant.rawValue,
+                    title: vm.variant.rawValue,
                     variant: .green,
                     fullWidth: true,
-                    isLoading: isLoading,
+                    isLoading: vm.isLoading,
                     action: action
                 )
                 Divider()
@@ -65,13 +75,6 @@ struct AuthenticationForm: View {
 }
 
 #Preview("macOS") {
-    AuthenticationForm(
-        variant: .signIn,
-        email: .constant(""),
-        password: .constant(""),
-        error: .constant(""),
-        isLoading: true
-    ) {
-        print("PIZDEC")
-    }
+    AuthenticationForm(vm:
+        AuthenticationViewModel(variant: .signIn))
 }

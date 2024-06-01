@@ -9,6 +9,8 @@ import SwiftUI
 import Factory
 
 struct NavigationBar: View {
+    @Injected(\.appState) private var appState
+    
     @Injected(\.settingsViewModel) private var settingsViewModel
     
     @Injected(\.router) private var router
@@ -64,7 +66,7 @@ struct NavigationBar: View {
                             .fontWeight(.medium)
                         #endif
                             .foregroundStyle(.textSecondary)
-                        Text("Your profile")
+                        Text(appState.currentUser?.username ?? "Your profile")
                             .font(.custom("Montserrat", size: 14))
                             .fontWeight(.bold)
                             .foregroundStyle(.textPrimary)
@@ -83,9 +85,9 @@ struct NavigationBar: View {
                         router.navigate(to: .myAccount)
                     }
 
-                    if !settingsViewModel.isAuthenticated {
+//                    if !appState.isAuth {
                         AuthenticationButtons(size: .small)
-                    }
+//                    }
                 }
             }
 
@@ -97,7 +99,7 @@ struct NavigationBar: View {
             .compositingGroup()
             .shadow(radius: 2, x: 0.5)
 
-            // MARK: важливо, щоб відображалась тінь нормально
+            // MARK: zIndex - важливо, щоб відображалась тінь нормально
 
             .zIndex(1)
         }

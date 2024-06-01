@@ -8,6 +8,14 @@
 import Factory
 import Foundation
 
+// MARK: AppState
+
+extension Container {
+    var appState: Factory<AppState> {
+        self { AppState() }.singleton
+    }
+}
+
 // MARK: Internal
 
 extension Container {
@@ -23,7 +31,7 @@ extension Container {
 // MARK: Services
 
 extension Container {
-    var authenticationService: Factory<Authentication> {
+    var authenticationService: Factory<AuthenticationService> {
         self { AuthenticationService() }.singleton
     }
 }

@@ -10,4 +10,5 @@ import Foundation
 struct Request {
     let path: String
     var method: HTTPMethod = .get([])
+    // providedToken: .access, .refresh, .none
 }

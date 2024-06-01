@@ -26,8 +26,6 @@
 		16570D942BBFF5590069B11D /* UINavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16570D932BBFF5590069B11D /* UINavigationController.swift */; };
 		16570D962BBFF6F90069B11D /* AuthenticationScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16570D952BBFF6F90069B11D /* AuthenticationScreen.swift */; };
 		16570D992BBFFC420069B11D /* AuthenticationForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16570D982BBFFC420069B11D /* AuthenticationForm.swift */; };
-		16570D9B2BBFFD3B0069B11D /* SignInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16570D9A2BBFFD3B0069B11D /* SignInScreen.swift */; };
-		16570D9D2BBFFD470069B11D /* SignUpScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16570D9C2BBFFD470069B11D /* SignUpScreen.swift */; };
 		16570DA02BBFFD720069B11D /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16570D9F2BBFFD720069B11D /* AuthenticationViewModel.swift */; };
 		1659622C2BA6E7700041D9AE /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659622B2BA6E7700041D9AE /* Application.swift */; };
 		1659622E2BA6E7700041D9AE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1659622D2BA6E7700041D9AE /* ContentView.swift */; };
@@ -48,6 +46,8 @@
 		1672A5942BE6199900F64B6D /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 1672A5932BE6199900F64B6D /* Factory */; };
 		1672A5962BE64FE300F64B6D /* AuthenticationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A5952BE64FE300F64B6D /* AuthenticationButtons.swift */; };
 		1687C1C02C0619A10027A801 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687C1BF2C0619A10027A801 /* HTTPClient.swift */; };
+		16F326352C0A2A6E00247375 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F326342C0A2A6E00247375 /* AppState.swift */; };
+		16FD64552C0B0BE60097BD45 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD64542C0B0BE60097BD45 /* ApiError.swift */; };
 		16FFA8352BFDD8C80034A137 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFA8342BFDD8C80034A137 /* JoinView.swift */; };
 		16FFA8372BFDDB070034A137 /* ButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFA8362BFDDB070034A137 /* ButtonIcon.swift */; };
 /* End PBXBuildFile section */
@@ -72,8 +72,6 @@
 		16570D932BBFF5590069B11D /* UINavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UINavigationController.swift; sourceTree = "<group>"; };
 		16570D952BBFF6F90069B11D /* AuthenticationScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationScreen.swift; sourceTree = "<group>"; };
 		16570D982BBFFC420069B11D /* AuthenticationForm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationForm.swift; sourceTree = "<group>"; };
-		16570D9A2BBFFD3B0069B11D /* SignInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInScreen.swift; sourceTree = "<group>"; };
-		16570D9C2BBFFD470069B11D /* SignUpScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpScreen.swift; sourceTree = "<group>"; };
 		16570D9F2BBFFD720069B11D /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		165962282BA6E7700041D9AE /* KahootClone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KahootClone.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1659622B2BA6E7700041D9AE /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
@@ -96,6 +94,8 @@
 		1668B6CE2BBEA4A40075E7C6 /* ConditionalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStack.swift; sourceTree = "<group>"; };
 		1672A5952BE64FE300F64B6D /* AuthenticationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationButtons.swift; sourceTree = "<group>"; };
 		1687C1BF2C0619A10027A801 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
+		16F326342C0A2A6E00247375 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		16FD64542C0B0BE60097BD45 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
 		16FFA8342BFDD8C80034A137 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		16FFA8362BFDDB070034A137 /* ButtonIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,6 +120,7 @@
 				16507F922C072661008764AD /* HTTPMethod.swift */,
 				16507F902C07264B008764AD /* NetworkError.swift */,
 				160929E62C08D86500D8A27B /* Api.swift */,
+				16FD64542C0B0BE60097BD45 /* ApiError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -174,8 +175,6 @@
 			children = (
 				1635B95F2BBF2A7400E1E9C5 /* MyAccountScreen.swift */,
 				16570D952BBFF6F90069B11D /* AuthenticationScreen.swift */,
-				16570D9A2BBFFD3B0069B11D /* SignInScreen.swift */,
-				16570D9C2BBFFD470069B11D /* SignUpScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -319,6 +318,7 @@
 				165962992BA77DEC0041D9AE /* Services */,
 				1659628B2BA718210041D9AE /* Extensions */,
 				165962492BA6ED1B0041D9AE /* Views */,
+				16F326342C0A2A6E00247375 /* AppState.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -515,20 +515,20 @@
 				160929EA2C08D97900D8A27B /* AuthResponse.swift in Sources */,
 				1659622C2BA6E7700041D9AE /* Application.swift in Sources */,
 				165962962BA71BDD0041D9AE /* QuizCategory.swift in Sources */,
+				16FD64552C0B0BE60097BD45 /* ApiError.swift in Sources */,
 				16507F912C07264B008764AD /* NetworkError.swift in Sources */,
 				1668B6CF2BBEA4A40075E7C6 /* ConditionalStack.swift in Sources */,
 				165962982BA765650041D9AE /* BottomSheet.swift in Sources */,
 				16507F932C072661008764AD /* HTTPMethod.swift in Sources */,
 				16570DA02BBFFD720069B11D /* AuthenticationViewModel.swift in Sources */,
-				16570D9D2BBFFD470069B11D /* SignUpScreen.swift in Sources */,
 				165962842BA6FD500041D9AE /* AppNavigationView.swift in Sources */,
 				16570D912BBFEF860069B11D /* SettingsScreen.swift in Sources */,
 				16570D962BBFF6F90069B11D /* AuthenticationScreen.swift in Sources */,
 				160929E72C08D86500D8A27B /* Api.swift in Sources */,
 				163AAAE12BC137E3003BCCF5 /* SettingsViewModel.swift in Sources */,
+				16F326352C0A2A6E00247375 /* AppState.swift in Sources */,
 				165962932BA71A8F0041D9AE /* ButtonPrimary.swift in Sources */,
 				1668B6CC2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift in Sources */,
-				16570D9B2BBFFD3B0069B11D /* SignInScreen.swift in Sources */,
 				1635B9602BBF2A7400E1E9C5 /* MyAccountScreen.swift in Sources */,
 				160929EE2C08D9A900D8A27B /* User.swift in Sources */,
 				16FFA8352BFDD8C80034A137 /* JoinView.swift in Sources */,

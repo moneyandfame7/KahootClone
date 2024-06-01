@@ -12,5 +12,5 @@ struct NoResponse: Codable {}
 struct BadResponse: Error, Codable {
     let statusCode: Int
     let message: String
-    let error: String
+    let error: String?
 }

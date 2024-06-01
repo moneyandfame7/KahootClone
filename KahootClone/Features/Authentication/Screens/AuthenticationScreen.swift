@@ -13,11 +13,13 @@ struct AuthenticationScreen: View {
 
     @State private var vm: AuthenticationViewModel
 
-    @State private var variant: AuthenticationVariant
-
     init(variant: AuthenticationVariant) {
-        _variant = State(initialValue: variant)
         _vm = State(initialValue: AuthenticationViewModel(variant: variant))
+    }
+
+    @ViewBuilder
+    private var formView: some View {
+        AuthenticationForm(vm: vm)
     }
 
     var body: some View {
@@ -31,14 +33,15 @@ struct AuthenticationScreen: View {
                         .fontWeight(.bold)
                 }
                 .buttonStyle(.plain)
-                Button(action: vm.test) {
-                    Text("TEST HUEST EPTA")
+                Button("Test") {
+                    print("PROTECTED TEST")
+                    vm.protectedRoute()
                 }
                 Spacer()
-                ButtonPrimary(title: variant == .signIn ? "Sign up" : "Sign in", variant: .surface) {
+                ButtonPrimary(title: vm.variant == .signIn ? "Sign up" : "Sign in", variant: .surface) {
                     vm.reset()
                     withAnimation {
-                        variant = variant == .signIn ? .signUp : .signIn
+                        vm.variant = vm.variant == .signIn ? .signUp : .signIn
                     }
                 }
             }
@@ -47,16 +50,7 @@ struct AuthenticationScreen: View {
             .background(.violetDark, ignoresSafeAreaEdges: .all)
 
             ScrollView {
-                ZStack {
-                    if variant == .signIn {
-                        SignInScreen()
-                            .transition(.opacity.combined(with: .scale(0.5)))
-                    } else {
-                        SignUpScreen()
-                            .transition(.move(edge: .trailing).combined(with: .opacity))
-                    }
-                }
-                .frame(maxWidth: .infinity)
+                formView
             }
             .safeAreaPadding(.vertical, 50)
         }
@@ -70,7 +64,5 @@ struct AuthenticationScreen: View {
 }
 
 #Preview {
-    _ = Container.shared.authenticationService.register { AuthenticationServiceMock()
-    }
-    return AuthenticationScreen(variant: .signIn)
+     AuthenticationScreen(variant: .signIn)
 }

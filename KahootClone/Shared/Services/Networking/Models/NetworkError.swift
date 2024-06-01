@@ -14,6 +14,8 @@ enum NetworkError: Error {
     case invalidResponse
     case invalidURL
     case httpError(Int)
+    case customError(String)
+    case unauthorized
 }
 
 extension NetworkError: LocalizedError {
@@ -31,6 +33,10 @@ extension NetworkError: LocalizedError {
             return NSLocalizedString("Invalid URL", comment: "invalidURL")
         case .httpError:
             return NSLocalizedString("Bad request", comment: "badRequest")
+        case let .customError(message):
+            return NSLocalizedString(message, comment: "customError")
+        case .unauthorized:
+            return NSLocalizedString("Unauthorized", comment: "unauthorized")
         }
     }
 }

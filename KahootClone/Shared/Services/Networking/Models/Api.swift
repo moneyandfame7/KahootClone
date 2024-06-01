@@ -20,6 +20,10 @@ enum Api {
         case signup(email: String, username: String, password: String)
 
         case login(username: String, password: String)
+
+        case test
+
+        case protectedRoute
     }
 }
 
@@ -46,6 +50,12 @@ extension Api.Auth {
                 path: "/auth/login",
                 method: .post(["username": username, "password": password])
             )
+
+        case .test:
+            return Request(path: "/auth/test", method: .get())
+
+        case .protectedRoute:
+            return Request(path: "/auth/protected", method: .get())
         }
     }
 }

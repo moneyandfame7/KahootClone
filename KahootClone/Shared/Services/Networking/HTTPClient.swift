@@ -9,7 +9,7 @@ import Foundation
 
 final class HTTPClient {
     let baseUrl: String
-    
+
     private let session: URLSession
 
     private let decoder: JSONDecoder
@@ -20,24 +20,38 @@ final class HTTPClient {
         let configuration = URLSessionConfiguration.default
         configuration.httpAdditionalHeaders = ["Content-Type": "application/json"]
 
+//        let accessToken = UserDefaults.standard.string(forKey: "accessToken")
+//
+//        if let accessToken {
+//            configuration.httpAdditionalHeaders?["Authorization"] = "Bearer \(accessToken)"
+//        }
+
         session = URLSession(configuration: configuration)
         decoder = JSONDecoder()
         encoder = JSONEncoder()
     }
 
-    func makeRequest<Response: Codable>(_ request: Request) async throws -> Response {
-        let urlRequest = try prepareUrlRequest(for: request)
+    func makeRequest<Response: Codable>(_ request: Request, useRefreshToken: Bool = false) async throws -> Response {
+        let urlRequest = try prepareUrlRequest(for: request, useRefreshToken: useRefreshToken)
 
         let (data, response) = try await session.data(for: urlRequest)
 
         try validate(data: data, response: response)
 
+        if data.isEmpty {
+            if Response.self == NoResponse.self {
+                return NoResponse() as! Response
+            }
+
+            throw NetworkError.customError("Data was unexpectedly empty")
+        }
+
         return try decode(data)
     }
 
-    private func prepareUrlRequest(for request: Request) throws -> URLRequest {
+    private func prepareUrlRequest(for request: Request, useRefreshToken: Bool) throws -> URLRequest {
         let fullUrlString = URL(string: baseUrl + request.path)!
-        
+
         var urlRequest = URLRequest(url: fullUrlString)
 
         switch request.method {
@@ -59,7 +73,15 @@ final class HTTPClient {
         case .delete:
             urlRequest.httpMethod = request.method.name
         }
-//        urlRequest.setValue("Bearer " + "hui pizda zalupa token", forHTTPHeaderField: "Authorization")
+
+        let jwtToken = UserDefaults.standard.string(forKey: useRefreshToken ? "refreshToken" : "accessToken")
+
+        if let jwtToken {
+            urlRequest.setValue("Bearer \(jwtToken)", forHTTPHeaderField: "Authorization")
+            print(jwtToken, "<<< JWT")
+        } else {
+            print("NO JWT TOKEN SUKA :)")
+        }
         return urlRequest
     }
 
@@ -67,11 +89,17 @@ final class HTTPClient {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkError.invalidResponse
         }
+        
+//        print(httpResponse.statusCode, "<<< STATUS_CODE")
+//        if httpResponse.statusCode == 401 {
+//            throw NetworkError.unauthorized
+//        }
 
         guard (200 ..< 300).contains(httpResponse.statusCode) else {
             guard let apiError = try? decoder.decode(BadResponse.self, from: data) else {
                 throw NetworkError.httpError(httpResponse.statusCode)
             }
+            
 
             throw NetworkError.serverError(apiError.message)
         }
@@ -82,6 +110,7 @@ final class HTTPClient {
             let result = try decoder.decode(T.self, from: data)
             return result
         } catch {
+            print(String(describing: error))
             throw NetworkError.decodingError(error)
         }
     }

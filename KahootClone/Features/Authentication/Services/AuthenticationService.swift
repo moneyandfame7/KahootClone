@@ -8,28 +8,18 @@
 import Factory
 import Foundation
 
-protocol Authentication {
-    func helloWorld() async throws -> NoResponse
-
-    func helloHui() -> Void
-}
-
-final class AuthenticationService: Authentication {
+final class AuthenticationService {
     @Injected(\.httpClient) private var httpClient
     init() {}
 
-    func helloWorld() async throws -> NoResponse {
-        print("HELLO_WORLD <REAL>")
-        let endpoint = Api.Common.helloWorld(username: "12345678", password: "password")
-        let request: Request = endpoint.createRequest()
+    func protectedRoute() async throws {
+        print("PROTECTED HUI")
+        let endpoint = Api.Auth.protectedRoute
+        let request = endpoint.createRequest()
 
         let response: NoResponse = try await httpClient.makeRequest(request)
 
-        return response
-    }
-
-    func helloHui() {
-        print("<REAL> AUTH_HUI")
+        print("RESULT_ROUTE: ", response)
     }
 
     func login(username: String, password: String) async throws {
@@ -37,27 +27,25 @@ final class AuthenticationService: Authentication {
         let request: Request = endpoint.createRequest()
 
         let response: AuthResponse = try await httpClient.makeRequest(request)
-        
+
         print("ACCESS_TOKEN:", response.tokens.accessToken)
     }
 
-    func signUp(email: String, username: String, password: String) async throws {
+    func signUp(email: String, username: String, password: String) async throws -> AuthResponse {
         let endpoint = Api.Auth.signup(email: email, username: username, password: password)
         let request: Request = endpoint.createRequest()
 
         let response: AuthResponse = try await httpClient.makeRequest(request)
 
-        print("ACCESS_TOKEN:", response.tokens.accessToken)
-    }
-}
-
-final class AuthenticationServiceMock: Authentication {
-    func helloWorld() async throws -> NoResponse {
-        print("HELLO_WORLD <MOCK>")
-        return NoResponse()
+        return response
     }
 
-    func helloHui() {
-        print("<MOCK> AUTH_HUI")
+    func test() async throws -> String {
+        let endpoint = Api.Auth.test
+        let request: Request = endpoint.createRequest()
+
+        let response: String = try await httpClient.makeRequest(request)
+
+        return response
     }
 }
