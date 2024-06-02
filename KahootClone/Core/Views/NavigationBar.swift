@@ -9,7 +9,7 @@ import SwiftUI
 import Factory
 
 struct NavigationBar: View {
-    @Injected(\.appState) private var appState
+    @Injected(\.authenticationViewModel) private var authViewModel
     
     @Injected(\.settingsViewModel) private var settingsViewModel
     
@@ -66,7 +66,7 @@ struct NavigationBar: View {
                             .fontWeight(.medium)
                         #endif
                             .foregroundStyle(.textSecondary)
-                        Text(appState.currentUser?.username ?? "Your profile")
+                        Text(authViewModel.user?.username ?? "Your profile")
                             .font(.custom("Montserrat", size: 14))
                             .fontWeight(.bold)
                             .foregroundStyle(.textPrimary)

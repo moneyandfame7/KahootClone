@@ -10,7 +10,8 @@ import SwiftUI
 
 @main
 struct Application: App {
-    @Injected(\.appState) var appState
+    @Injected(\.authenticationViewModel) private var authViewModel
+
 
     @Injected(\.router) private var router
 
@@ -20,6 +21,9 @@ struct Application: App {
             #if os(macOS)
                 .frame(minWidth: 800, maxWidth: .infinity, minHeight: 500, maxHeight: .infinity)
             #endif
+                .task {
+                    authViewModel.restoreSession()
+                }
         }
         #if os(macOS)
         .defaultSize(width: 1000, height: 650)

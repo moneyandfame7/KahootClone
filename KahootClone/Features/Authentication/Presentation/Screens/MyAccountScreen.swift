@@ -9,7 +9,7 @@ import Factory
 import SwiftUI
 
 struct MyAccountScreen: View {
-    @Injected(\.appState) private var appState
+    @Injected(\.authenticationViewModel) private var authViewModel
 
     @Injected(\.router) private var router
 
@@ -71,16 +71,16 @@ struct MyAccountScreen: View {
             .background(.ultraThinMaterial)
 
             ScrollView {
-                if !appState.isAuth {
+                if !authViewModel.isAuth {
                     unauthenticatedAccount
                 } else {
                     VStack {
                         VStack(spacing: 0) {
-                            Text(appState.currentUser!.username)
+                            Text(authViewModel.user!.username)
                                 .font(.custom("Montserrat", size: 18))
                                 .fontWeight(/*@START_MENU_TOKEN@*/ .bold/*@END_MENU_TOKEN@*/)
                                 .foregroundStyle(.textPrimary)
-                            Text(appState.currentUser!.email)
+                            Text(authViewModel.user!.email)
                                 .font(.custom("Montserrat", size: 12))
                                 .foregroundStyle(.textSecondary)
                         }

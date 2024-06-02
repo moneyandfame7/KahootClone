@@ -11,15 +11,12 @@ import SwiftUI
 struct AuthenticationScreen: View {
     @Injected(\.router) private var router
 
-    @State private var vm: AuthenticationViewModel
+    @State private var formValues: AuthenticationFormValues = .init()
+
+    @State private var variant: AuthenticationVariant
 
     init(variant: AuthenticationVariant) {
-        _vm = State(initialValue: AuthenticationViewModel(variant: variant))
-    }
-
-    @ViewBuilder
-    private var formView: some View {
-        AuthenticationForm(vm: vm)
+        _variant = State(initialValue: variant)
     }
 
     var body: some View {
@@ -33,15 +30,12 @@ struct AuthenticationScreen: View {
                         .fontWeight(.bold)
                 }
                 .buttonStyle(.plain)
-                Button("Test") {
-                    print("PROTECTED TEST")
-                    vm.protectedRoute()
-                }
+
                 Spacer()
-                ButtonPrimary(title: vm.variant == .signIn ? "Sign up" : "Sign in", variant: .surface) {
-                    vm.reset()
+                ButtonPrimary(title: variant == .login ? "Register" : "Login", variant: .surface) {
+                    formValues.reset()
                     withAnimation {
-                        vm.variant = vm.variant == .signIn ? .signUp : .signIn
+                        variant = variant == .login ? .register : .login
                     }
                 }
             }
@@ -50,7 +44,7 @@ struct AuthenticationScreen: View {
             .background(.violetDark, ignoresSafeAreaEdges: .all)
 
             ScrollView {
-                formView
+                AuthenticationForm(formValues: $formValues, variant: variant)
             }
             .safeAreaPadding(.vertical, 50)
         }
@@ -59,10 +53,9 @@ struct AuthenticationScreen: View {
         .font(.custom("Montserrat", size: 16))
         .foregroundStyle(.white)
         .navigationBarBackButtonHidden()
-        .environment(vm)
     }
 }
 
 #Preview {
-     AuthenticationScreen(variant: .signIn)
+    AuthenticationScreen(variant: .login)
 }

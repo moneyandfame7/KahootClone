@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AuthResponse: Codable {
-    let tokens: Tokens
-    let user: User
-}
+//struct AuthResponse: Codable {
+//    let tokens: TokensEntity
+//    let user: UserEntity
+//}

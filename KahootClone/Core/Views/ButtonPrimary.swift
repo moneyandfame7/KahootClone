@@ -34,7 +34,7 @@ struct ButtonPrimaryStyle: ButtonStyle {
                         .foregroundStyle(variant.mainColor)
                 }
                 .compositingGroup()
-                .opacity(isEnabled ? 1 : 0.7)
+                .opacity(isEnabled ? 1 : 0.3)
             )
             .foregroundStyle(variant.labelColor)
             .offset(y: configuration.isPressed || pressed ? 4 : 0)
@@ -194,7 +194,7 @@ struct ButtonPrimary: View {
             fullWidth: fullWidth,
             pressed: pressed
         ))
-        .disabled(isLoading)
+        .disabled(disabled || isLoading)
     }
 }
 
@@ -220,6 +220,7 @@ struct ButtonPrimary: View {
             loadingTitle: "Loading...",
             action: {}
         )
+        ButtonPrimary(title: "Disabled.", icon: "plus", variant: .green, disabled: true, action: {})
 
         ButtonPrimary(title: "Hui.", icon: "plus", variant: .violet, action: {})
     }
