@@ -8,13 +8,6 @@
 import Factory
 import Foundation
 
-// MARK: AppState
-
-extension Container {
-    var appState: Factory<AppState> {
-        self { AppState() }.singleton
-    }
-}
 
 // MARK: Internal
 
@@ -28,17 +21,39 @@ extension Container {
     }
 }
 
-// MARK: Services
+// MARK: UseCases
 
 extension Container {
-    var authenticationService: Factory<AuthenticationService> {
-        self { AuthenticationService() }.singleton
+    var registerUseCase: Factory<RegisterUseCase> {
+        self { RegisterUseCase() }
+    }
+
+    var loginUseCase: Factory<LoginUseCase> {
+        self { LoginUseCase() }
     }
 }
+
+// MARK: DataSources
+
+extension Container {
+    var authRemoteDataSource: Factory<AuthRemoteDataSourceProtocol> {
+        self { AuthRemoteDataSource() }
+    }
+
+    var authLocalDataSource: Factory<AuthLocalDataSourceProtocol> {
+        self { AuthLocalDataSource() }
+    }
+}
+
+// MARK: Services
 
 // MARK: ViewModels
 
 extension Container {
+    var authenticationViewModel: Factory<AuthenticationViewModel> {
+        self { AuthenticationViewModel() }.singleton
+    }
+
     var settingsViewModel: Factory<SettingsViewModel> {
         self { SettingsViewModel() }.singleton
     }

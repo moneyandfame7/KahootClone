@@ -15,11 +15,11 @@ struct AuthenticationButtons: View {
     var body: some View {
         HStack(spacing: size == .small ? 10 : 25) {
             ButtonPrimary(title: "Sign in", size: size, variant: .background, fullWidth: true) {
-                router.navigate(to: .authentication(variant: .signIn))
+                router.navigate(to: .authentication(variant: .login))
             }
 
             ButtonPrimary(title: "Sign up", size: size, fullWidth: true) {
-                router.navigate(to: .authentication(variant: .signUp))
+                router.navigate(to: .authentication(variant: .register))
             }
         }
     }

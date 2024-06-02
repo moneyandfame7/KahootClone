@@ -13,7 +13,6 @@
 		160929EC2C08D98A00D8A27B /* Tokens.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160929EB2C08D98A00D8A27B /* Tokens.swift */; };
 		160929EE2C08D9A900D8A27B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 160929ED2C08D9A900D8A27B /* User.swift */; };
 		1635B9542BBEE91100E1E9C5 /* CategoryScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1635B9532BBEE91100E1E9C5 /* CategoryScreen.swift */; };
-		1635B95E2BBF252100E1E9C5 /* AuthenticationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1635B95D2BBF252100E1E9C5 /* AuthenticationService.swift */; };
 		1635B9602BBF2A7400E1E9C5 /* MyAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1635B95F2BBF2A7400E1E9C5 /* MyAccountScreen.swift */; };
 		163AAAE12BC137E3003BCCF5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163AAAE02BC137E3003BCCF5 /* SettingsViewModel.swift */; };
 		163AAAE62BC14A20003BCCF5 /* KCTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163AAAE52BC14A20003BCCF5 /* KCTextFieldStyle.swift */; };
@@ -46,8 +45,16 @@
 		1672A5942BE6199900F64B6D /* Factory in Frameworks */ = {isa = PBXBuildFile; productRef = 1672A5932BE6199900F64B6D /* Factory */; };
 		1672A5962BE64FE300F64B6D /* AuthenticationButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1672A5952BE64FE300F64B6D /* AuthenticationButtons.swift */; };
 		1687C1C02C0619A10027A801 /* HTTPClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1687C1BF2C0619A10027A801 /* HTTPClient.swift */; };
-		16F326352C0A2A6E00247375 /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16F326342C0A2A6E00247375 /* AppState.swift */; };
 		16FD64552C0B0BE60097BD45 /* ApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD64542C0B0BE60097BD45 /* ApiError.swift */; };
+		16FD645B2C0B267B0097BD45 /* UserEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD645A2C0B267B0097BD45 /* UserEntity.swift */; };
+		16FD64612C0B290A0097BD45 /* TokensEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD64602C0B290A0097BD45 /* TokensEntity.swift */; };
+		16FD64672C0B3C6E0097BD45 /* RegisterUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD64662C0B3C6E0097BD45 /* RegisterUseCase.swift */; };
+		16FD64692C0B3C890097BD45 /* BaseUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD64682C0B3C890097BD45 /* BaseUseCase.swift */; };
+		16FD646D2C0B50030097BD45 /* LoginUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD646C2C0B50030097BD45 /* LoginUseCase.swift */; };
+		16FD646F2C0B6D120097BD45 /* AuthRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD646E2C0B6D120097BD45 /* AuthRepositoryProtocol.swift */; };
+		16FD64722C0B6D7A0097BD45 /* AuthRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD64712C0B6D7A0097BD45 /* AuthRepository.swift */; };
+		16FD64752C0B6E390097BD45 /* AuthRemoteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD64742C0B6E390097BD45 /* AuthRemoteDataSource.swift */; };
+		16FD64772C0B6F690097BD45 /* AuthLocalDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FD64762C0B6F690097BD45 /* AuthLocalDataSource.swift */; };
 		16FFA8352BFDD8C80034A137 /* JoinView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFA8342BFDD8C80034A137 /* JoinView.swift */; };
 		16FFA8372BFDDB070034A137 /* ButtonIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16FFA8362BFDDB070034A137 /* ButtonIcon.swift */; };
 /* End PBXBuildFile section */
@@ -59,7 +66,6 @@
 		160929EB2C08D98A00D8A27B /* Tokens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tokens.swift; sourceTree = "<group>"; };
 		160929ED2C08D9A900D8A27B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		1635B9532BBEE91100E1E9C5 /* CategoryScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryScreen.swift; sourceTree = "<group>"; };
-		1635B95D2BBF252100E1E9C5 /* AuthenticationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationService.swift; sourceTree = "<group>"; };
 		1635B95F2BBF2A7400E1E9C5 /* MyAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountScreen.swift; sourceTree = "<group>"; };
 		163AAAE02BC137E3003BCCF5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		163AAAE52BC14A20003BCCF5 /* KCTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCTextFieldStyle.swift; sourceTree = "<group>"; };
@@ -94,8 +100,16 @@
 		1668B6CE2BBEA4A40075E7C6 /* ConditionalStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionalStack.swift; sourceTree = "<group>"; };
 		1672A5952BE64FE300F64B6D /* AuthenticationButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationButtons.swift; sourceTree = "<group>"; };
 		1687C1BF2C0619A10027A801 /* HTTPClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPClient.swift; sourceTree = "<group>"; };
-		16F326342C0A2A6E00247375 /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
 		16FD64542C0B0BE60097BD45 /* ApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiError.swift; sourceTree = "<group>"; };
+		16FD645A2C0B267B0097BD45 /* UserEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEntity.swift; sourceTree = "<group>"; };
+		16FD64602C0B290A0097BD45 /* TokensEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokensEntity.swift; sourceTree = "<group>"; };
+		16FD64662C0B3C6E0097BD45 /* RegisterUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUseCase.swift; sourceTree = "<group>"; };
+		16FD64682C0B3C890097BD45 /* BaseUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUseCase.swift; sourceTree = "<group>"; };
+		16FD646C2C0B50030097BD45 /* LoginUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUseCase.swift; sourceTree = "<group>"; };
+		16FD646E2C0B6D120097BD45 /* AuthRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepositoryProtocol.swift; sourceTree = "<group>"; };
+		16FD64712C0B6D7A0097BD45 /* AuthRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRepository.swift; sourceTree = "<group>"; };
+		16FD64742C0B6E390097BD45 /* AuthRemoteDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRemoteDataSource.swift; sourceTree = "<group>"; };
+		16FD64762C0B6F690097BD45 /* AuthLocalDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthLocalDataSource.swift; sourceTree = "<group>"; };
 		16FFA8342BFDD8C80034A137 /* JoinView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JoinView.swift; sourceTree = "<group>"; };
 		16FFA8362BFDDB070034A137 /* ButtonIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonIcon.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -161,11 +175,10 @@
 		1635B9582BBF1A3200E1E9C5 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				16FD64582C0B225E0097BD45 /* Data */,
+				16FD64572C0B22590097BD45 /* Domain */,
+				16FD64562C0B22480097BD45 /* Presentation */,
 				160929E82C08D96E00D8A27B /* Models */,
-				16570D9E2BBFFD680069B11D /* ViewModels */,
-				16570D972BBFFC350069B11D /* Views */,
-				1635B95C2BBF251200E1E9C5 /* Services */,
-				1635B9592BBF1A6900E1E9C5 /* Screens */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -177,14 +190,6 @@
 				16570D952BBFF6F90069B11D /* AuthenticationScreen.swift */,
 			);
 			path = Screens;
-			sourceTree = "<group>";
-		};
-		1635B95C2BBF251200E1E9C5 /* Services */ = {
-			isa = PBXGroup;
-			children = (
-				1635B95D2BBF252100E1E9C5 /* AuthenticationService.swift */,
-			);
-			path = Services;
 			sourceTree = "<group>";
 		};
 		163AAADF2BC137D8003BCCF5 /* ViewModels */ = {
@@ -232,6 +237,8 @@
 		16570D922BBFF54C0069B11D /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				1659628C2BA718290041D9AE /* View.swift */,
+				1668B6CB2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift */,
 				16570D932BBFF5590069B11D /* UINavigationController.swift */,
 			);
 			path = Extensions;
@@ -274,12 +281,11 @@
 		1659622A2BA6E7700041D9AE /* KahootClone */ = {
 			isa = PBXGroup;
 			children = (
-				1668B6C92BBEA0270075E7C6 /* Other */,
-				1659623B2BA6E9B80041D9AE /* Shared */,
-				1659623A2BA6E9B00041D9AE /* Features */,
 				1659622B2BA6E7700041D9AE /* Application.swift */,
 				1659622D2BA6E7700041D9AE /* ContentView.swift */,
 				16507F962C072779008764AD /* DependencyInjection.swift */,
+				16FD64592C0B23DC0097BD45 /* Core */,
+				1659623A2BA6E9B00041D9AE /* Features */,
 				1659622F2BA6E7710041D9AE /* Assets.xcassets */,
 				165962462BA6EBFE0041D9AE /* Info.plist */,
 				165962442BA6EBF00041D9AE /* Montserrat.ttf */,
@@ -309,18 +315,6 @@
 				165962892BA717480041D9AE /* Library */,
 			);
 			path = Features;
-			sourceTree = "<group>";
-		};
-		1659623B2BA6E9B80041D9AE /* Shared */ = {
-			isa = PBXGroup;
-			children = (
-				163AAAE42BC14A0D003BCCF5 /* Styles */,
-				165962992BA77DEC0041D9AE /* Services */,
-				1659628B2BA718210041D9AE /* Extensions */,
-				165962492BA6ED1B0041D9AE /* Views */,
-				16F326342C0A2A6E00247375 /* AppState.swift */,
-			);
-			path = Shared;
 			sourceTree = "<group>";
 		};
 		165962402BA6EB1E0041D9AE /* Home */ = {
@@ -385,14 +379,6 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
-		1659628B2BA718210041D9AE /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				1659628C2BA718290041D9AE /* View.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		165962942BA71BD40041D9AE /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,22 +387,89 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		165962992BA77DEC0041D9AE /* Services */ = {
+		16FD64562C0B22480097BD45 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
-				16507F8D2C07261D008764AD /* Networking */,
-				1659629A2BA77E000041D9AE /* Router.swift */,
+				16570D9E2BBFFD680069B11D /* ViewModels */,
+				16570D972BBFFC350069B11D /* Views */,
+				1635B9592BBF1A6900E1E9C5 /* Screens */,
 			);
-			path = Services;
+			path = Presentation;
 			sourceTree = "<group>";
 		};
-		1668B6C92BBEA0270075E7C6 /* Other */ = {
+		16FD64572C0B22590097BD45 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
-				16570D922BBFF54C0069B11D /* Extensions */,
-				1668B6CB2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift */,
+				16FD645F2C0B28A10097BD45 /* Entities */,
+				16FD64642C0B3C2B0097BD45 /* UseCases */,
+				16FD64652C0B3C440097BD45 /* Repositories */,
 			);
-			path = Other;
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		16FD64582C0B225E0097BD45 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				16FD64732C0B6E020097BD45 /* DataSources */,
+				16FD64702C0B6D6A0097BD45 /* Repositories */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		16FD64592C0B23DC0097BD45 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				1659629A2BA77E000041D9AE /* Router.swift */,
+				16507F8D2C07261D008764AD /* Networking */,
+				16570D922BBFF54C0069B11D /* Extensions */,
+				163AAAE42BC14A0D003BCCF5 /* Styles */,
+				165962492BA6ED1B0041D9AE /* Views */,
+				16FD64682C0B3C890097BD45 /* BaseUseCase.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		16FD645F2C0B28A10097BD45 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				16FD645A2C0B267B0097BD45 /* UserEntity.swift */,
+				16FD64602C0B290A0097BD45 /* TokensEntity.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		16FD64642C0B3C2B0097BD45 /* UseCases */ = {
+			isa = PBXGroup;
+			children = (
+				16FD64662C0B3C6E0097BD45 /* RegisterUseCase.swift */,
+				16FD646C2C0B50030097BD45 /* LoginUseCase.swift */,
+			);
+			path = UseCases;
+			sourceTree = "<group>";
+		};
+		16FD64652C0B3C440097BD45 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				16FD646E2C0B6D120097BD45 /* AuthRepositoryProtocol.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		16FD64702C0B6D6A0097BD45 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				16FD64712C0B6D7A0097BD45 /* AuthRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		16FD64732C0B6E020097BD45 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				16FD64742C0B6E390097BD45 /* AuthRemoteDataSource.swift */,
+				16FD64762C0B6F690097BD45 /* AuthLocalDataSource.swift */,
+			);
+			path = DataSources;
 			sourceTree = "<group>";
 		};
 		16FFA8332BFDD8B80034A137 /* Views */ = {
@@ -504,17 +557,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				16FD64692C0B3C890097BD45 /* BaseUseCase.swift in Sources */,
 				1659629B2BA77E000041D9AE /* Router.swift in Sources */,
 				160929EC2C08D98A00D8A27B /* Tokens.swift in Sources */,
 				16570D942BBFF5590069B11D /* UINavigationController.swift in Sources */,
 				165962882BA716EA0041D9AE /* HomeHeaderView.swift in Sources */,
 				1659622E2BA6E7700041D9AE /* ContentView.swift in Sources */,
 				1687C1C02C0619A10027A801 /* HTTPClient.swift in Sources */,
+				16FD646F2C0B6D120097BD45 /* AuthRepositoryProtocol.swift in Sources */,
 				1659628F2BA719200041D9AE /* HomeScreen.swift in Sources */,
 				1659628D2BA718290041D9AE /* View.swift in Sources */,
 				160929EA2C08D97900D8A27B /* AuthResponse.swift in Sources */,
+				16FD64722C0B6D7A0097BD45 /* AuthRepository.swift in Sources */,
+				16FD64772C0B6F690097BD45 /* AuthLocalDataSource.swift in Sources */,
 				1659622C2BA6E7700041D9AE /* Application.swift in Sources */,
 				165962962BA71BDD0041D9AE /* QuizCategory.swift in Sources */,
+				16FD64672C0B3C6E0097BD45 /* RegisterUseCase.swift in Sources */,
 				16FD64552C0B0BE60097BD45 /* ApiError.swift in Sources */,
 				16507F912C07264B008764AD /* NetworkError.swift in Sources */,
 				1668B6CF2BBEA4A40075E7C6 /* ConditionalStack.swift in Sources */,
@@ -525,16 +583,17 @@
 				16570D912BBFEF860069B11D /* SettingsScreen.swift in Sources */,
 				16570D962BBFF6F90069B11D /* AuthenticationScreen.swift in Sources */,
 				160929E72C08D86500D8A27B /* Api.swift in Sources */,
+				16FD64752C0B6E390097BD45 /* AuthRemoteDataSource.swift in Sources */,
 				163AAAE12BC137E3003BCCF5 /* SettingsViewModel.swift in Sources */,
-				16F326352C0A2A6E00247375 /* AppState.swift in Sources */,
+				16FD645B2C0B267B0097BD45 /* UserEntity.swift in Sources */,
 				165962932BA71A8F0041D9AE /* ButtonPrimary.swift in Sources */,
+				16FD646D2C0B50030097BD45 /* LoginUseCase.swift in Sources */,
 				1668B6CC2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift in Sources */,
 				1635B9602BBF2A7400E1E9C5 /* MyAccountScreen.swift in Sources */,
 				160929EE2C08D9A900D8A27B /* User.swift in Sources */,
 				16FFA8352BFDD8C80034A137 /* JoinView.swift in Sources */,
 				16570D992BBFFC420069B11D /* AuthenticationForm.swift in Sources */,
 				16507F8F2C07263D008764AD /* Response.swift in Sources */,
-				1635B95E2BBF252100E1E9C5 /* AuthenticationService.swift in Sources */,
 				1635B9542BBEE91100E1E9C5 /* CategoryScreen.swift in Sources */,
 				160798F02BA787C500672850 /* NavigationBar.swift in Sources */,
 				16FFA8372BFDDB070034A137 /* ButtonIcon.swift in Sources */,
@@ -542,6 +601,7 @@
 				16507F952C07266E008764AD /* Request.swift in Sources */,
 				163AAAE62BC14A20003BCCF5 /* KCTextFieldStyle.swift in Sources */,
 				16507F972C072779008764AD /* DependencyInjection.swift in Sources */,
+				16FD64612C0B290A0097BD45 /* TokensEntity.swift in Sources */,
 				1672A5962BE64FE300F64B6D /* AuthenticationButtons.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

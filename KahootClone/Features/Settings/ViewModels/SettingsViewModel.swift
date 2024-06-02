@@ -11,8 +11,6 @@ import SwiftUI
 
 @Observable
 final class SettingsViewModel {
-    @ObservationIgnored
-    @Injected(\.authenticationService) var authenticationService
 
     private static let logger = Logger(
         subsystem: Bundle.main.bundleIdentifier!,
@@ -27,7 +25,6 @@ final class SettingsViewModel {
 
     func signOut() {
         do {
-//            try authenticationService.signOut()
             isAuthenticated = false
         } catch {
             Self.logger.error("Sign Out: \(error.localizedDescription)")
