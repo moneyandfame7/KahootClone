@@ -6,6 +6,7 @@
 //
 
 import Factory
+import Observation
 import SwiftUI
 
 enum AuthenticationVariant: String {
@@ -13,7 +14,8 @@ enum AuthenticationVariant: String {
     case register = "Register"
 }
 
-@Observable final class AuthenticationViewModel {
+@Observable
+final class AuthenticationViewModel {
     @ObservationIgnored
     @Injected(\.registerUseCase) private var registerUseCase
     @ObservationIgnored

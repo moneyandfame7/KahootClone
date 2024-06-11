@@ -8,7 +8,6 @@
 import Factory
 import Foundation
 
-
 // MARK: Internal
 
 extension Container {
@@ -44,8 +43,6 @@ extension Container {
         self { AuthLocalDataSource() }
     }
 }
-
-// MARK: Services
 
 // MARK: ViewModels
 
