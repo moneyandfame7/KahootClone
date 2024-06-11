@@ -24,6 +24,8 @@ enum Api {
         case test
 
         case protectedRoute
+
+        case refreshToken
     }
 }
 
@@ -56,6 +58,9 @@ extension Api.Auth {
 
         case .protectedRoute:
             return Request(path: "/auth/protected", method: .get())
+
+        case .refreshToken:
+            return Request(path: "/auth/refresh", method: .get())
         }
     }
 }

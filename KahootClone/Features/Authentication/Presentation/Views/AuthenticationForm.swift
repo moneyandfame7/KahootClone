@@ -95,7 +95,13 @@ struct AuthenticationForm: View {
                 .font(.custom("Montserrat", size: 24))
                 .fontWeight(.bold)
                 .foregroundStyle(.white)
-
+            Button("Protected route") {
+                authenticationViewModel.protectedRoute()
+            }
+            Button("Clear tokens") {
+                UserDefaults.standard.removeObject(forKey: "accessToken")
+                UserDefaults.standard.removeObject(forKey: "refreshToken")
+            }
             VStack {
                 if variant == .register {
                     TextField("Username", text: $formValues.username)
@@ -124,7 +130,7 @@ struct AuthenticationForm: View {
                     title: variant.rawValue,
                     variant: .green,
                     fullWidth: true,
-                    disabled: true,
+                    disabled: !formValues.isValid(for: .register),
                     action: variant == .login ? handleLogin : handleRegister
                 )
                 Divider()

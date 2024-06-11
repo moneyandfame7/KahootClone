@@ -15,6 +15,8 @@ final class HTTPClient {
     private let decoder: JSONDecoder
     private let encoder: JSONEncoder
 
+    private var refreshTask: Task<String, Error>?
+
     init(baseUrl: String) {
         self.baseUrl = baseUrl
         let configuration = URLSessionConfiguration.default
@@ -31,12 +33,23 @@ final class HTTPClient {
         encoder = JSONEncoder()
     }
 
-    func makeRequest<Response: Codable>(_ request: Request, useRefreshToken: Bool = false) async throws -> Response {
+    func makeRequest<Response: Codable>(
+        _ request: Request,
+        useRefreshToken: Bool = false,
+        allowRetry: Bool = true
+    ) async throws -> Response {
         let urlRequest = try prepareUrlRequest(for: request, useRefreshToken: useRefreshToken)
 
         let (data, response) = try await session.data(for: urlRequest)
 
-        try validate(data: data, response: response)
+        if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 401 {
+            if allowRetry {
+                _ = try await refreshToken()
+                return try await makeRequest(request, allowRetry: false)
+            }
+            print("Хуйовий результат після рефреш токену")
+            throw NetworkError.unauthorized
+        }
 
         if data.isEmpty {
             if Response.self == NoResponse.self {
@@ -44,6 +57,12 @@ final class HTTPClient {
             }
 
             throw NetworkError.customError("Data was unexpectedly empty")
+        }
+
+        try await validate(data: data, response: response, request: request)
+
+        if !allowRetry {
+            print("Топ результат після рефреш токену")
         }
 
         return try decode(data)
@@ -78,18 +97,19 @@ final class HTTPClient {
 
         if let jwtToken {
             urlRequest.setValue("Bearer \(jwtToken)", forHTTPHeaderField: "Authorization")
-            print(jwtToken, "<<< JWT")
         } else {
-            print("NO JWT TOKEN SUKA :)")
+            if useRefreshToken {
+                throw NetworkError.unauthorized
+            }
         }
         return urlRequest
     }
 
-    private func validate(data: Data, response: URLResponse) throws {
+    private func validate(data: Data, response: URLResponse, request: Request) async throws {
         guard let httpResponse = response as? HTTPURLResponse else {
             throw NetworkError.invalidResponse
         }
-        
+
 //        print(httpResponse.statusCode, "<<< STATUS_CODE")
 //        if httpResponse.statusCode == 401 {
 //            throw NetworkError.unauthorized
@@ -99,7 +119,6 @@ final class HTTPClient {
             guard let apiError = try? decoder.decode(BadResponse.self, from: data) else {
                 throw NetworkError.httpError(httpResponse.statusCode)
             }
-            
 
             throw NetworkError.serverError(apiError.message)
         }
@@ -113,5 +132,15 @@ final class HTTPClient {
             print(String(describing: error))
             throw NetworkError.decodingError(error)
         }
+    }
+
+    func refreshToken() async throws {
+        let endpoint = Api.Auth.refreshToken
+        let request: Request = endpoint.createRequest()
+
+        let response: RefreshTokenResult = try await makeRequest(request, useRefreshToken: true, allowRetry: true)
+
+        print("<<< TOKEN REFRESH >>> ")
+        UserDefaults.standard.set(response.accessToken, forKey: "accessToken")
     }
 }

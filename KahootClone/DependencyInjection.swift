@@ -30,6 +30,10 @@ extension Container {
     var loginUseCase: Factory<LoginUseCase> {
         self { LoginUseCase() }
     }
+
+    var protectedUseCase: Factory<ProtectedUseCase> {
+        self { ProtectedUseCase() }
+    }
 }
 
 // MARK: DataSources

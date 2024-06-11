@@ -13,3 +13,5 @@ protocol BaseUseCase {
 
     func execute(params: Params) async throws -> Result
 }
+
+struct EmptyStruct: Codable {}

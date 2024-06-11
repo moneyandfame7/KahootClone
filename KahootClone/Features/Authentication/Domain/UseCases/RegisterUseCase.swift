@@ -35,6 +35,9 @@ final class RegisterUseCase: BaseUseCase {
 
         let response: Result = try await httpClient.makeRequest(request)
 
+        UserDefaults.standard.set(response.tokens.accessToken, forKey: "accessToken")
+        UserDefaults.standard.set(response.tokens.refreshToken, forKey: "refreshToken")
+        
         return response
     }
 }

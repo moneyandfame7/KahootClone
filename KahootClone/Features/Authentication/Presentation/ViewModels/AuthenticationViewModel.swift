@@ -20,6 +20,8 @@ final class AuthenticationViewModel {
     @Injected(\.registerUseCase) private var registerUseCase
     @ObservationIgnored
     @Injected(\.loginUseCase) private var loginUseCase
+    @ObservationIgnored
+    @Injected(\.protectedUseCase) private var protectedUseCase
 
     var user: UserEntity?
 
@@ -39,7 +41,9 @@ final class AuthenticationViewModel {
     }
 
     func protectedRoute() {
-        Task { @MainActor in }
+        Task { @MainActor in
+            try await protectedUseCase.execute()
+        }
     }
 
     func signIn(completion: @escaping () -> Void) {

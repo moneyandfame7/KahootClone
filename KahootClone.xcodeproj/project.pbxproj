@@ -13,6 +13,9 @@
 		1635B9602BBF2A7400E1E9C5 /* MyAccountScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1635B95F2BBF2A7400E1E9C5 /* MyAccountScreen.swift */; };
 		163AAAE12BC137E3003BCCF5 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163AAAE02BC137E3003BCCF5 /* SettingsViewModel.swift */; };
 		163AAAE62BC14A20003BCCF5 /* KCTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163AAAE52BC14A20003BCCF5 /* KCTextFieldStyle.swift */; };
+		163C0ABB2C18AF8D0004B5F3 /* RefreshTokenUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C0ABA2C18AF8D0004B5F3 /* RefreshTokenUseCase.swift */; };
+		163C0ABD2C18B32F0004B5F3 /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C0ABC2C18B32F0004B5F3 /* TokenManager.swift */; };
+		163C0ABF2C18BEB00004B5F3 /* ProtectedUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 163C0ABE2C18BEB00004B5F3 /* ProtectedUseCase.swift */; };
 		16507F8F2C07263D008764AD /* Response.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16507F8E2C07263D008764AD /* Response.swift */; };
 		16507F912C07264B008764AD /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16507F902C07264B008764AD /* NetworkError.swift */; };
 		16507F932C072661008764AD /* HTTPMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16507F922C072661008764AD /* HTTPMethod.swift */; };
@@ -63,6 +66,9 @@
 		1635B95F2BBF2A7400E1E9C5 /* MyAccountScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountScreen.swift; sourceTree = "<group>"; };
 		163AAAE02BC137E3003BCCF5 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		163AAAE52BC14A20003BCCF5 /* KCTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KCTextFieldStyle.swift; sourceTree = "<group>"; };
+		163C0ABA2C18AF8D0004B5F3 /* RefreshTokenUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenUseCase.swift; sourceTree = "<group>"; };
+		163C0ABC2C18B32F0004B5F3 /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
+		163C0ABE2C18BEB00004B5F3 /* ProtectedUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProtectedUseCase.swift; sourceTree = "<group>"; };
 		16507F8E2C07263D008764AD /* Response.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Response.swift; sourceTree = "<group>"; };
 		16507F902C07264B008764AD /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
 		16507F922C072661008764AD /* HTTPMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPMethod.swift; sourceTree = "<group>"; };
@@ -196,6 +202,7 @@
 			children = (
 				160929DE2C08BD7400D8A27B /* Models */,
 				1687C1BF2C0619A10027A801 /* HTTPClient.swift */,
+				163C0ABC2C18B32F0004B5F3 /* TokenManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -426,6 +433,8 @@
 			children = (
 				16FD64662C0B3C6E0097BD45 /* RegisterUseCase.swift */,
 				16FD646C2C0B50030097BD45 /* LoginUseCase.swift */,
+				163C0ABA2C18AF8D0004B5F3 /* RefreshTokenUseCase.swift */,
+				163C0ABE2C18BEB00004B5F3 /* ProtectedUseCase.swift */,
 			);
 			path = UseCases;
 			sourceTree = "<group>";
@@ -548,6 +557,7 @@
 				1687C1C02C0619A10027A801 /* HTTPClient.swift in Sources */,
 				16FD646F2C0B6D120097BD45 /* AuthRepositoryProtocol.swift in Sources */,
 				1659628F2BA719200041D9AE /* HomeScreen.swift in Sources */,
+				163C0ABF2C18BEB00004B5F3 /* ProtectedUseCase.swift in Sources */,
 				1659628D2BA718290041D9AE /* View.swift in Sources */,
 				16FD64722C0B6D7A0097BD45 /* AuthRepository.swift in Sources */,
 				16FD64772C0B6F690097BD45 /* AuthLocalDataSource.swift in Sources */,
@@ -569,6 +579,7 @@
 				16FD645B2C0B267B0097BD45 /* UserEntity.swift in Sources */,
 				165962932BA71A8F0041D9AE /* ButtonPrimary.swift in Sources */,
 				16FD646D2C0B50030097BD45 /* LoginUseCase.swift in Sources */,
+				163C0ABB2C18AF8D0004B5F3 /* RefreshTokenUseCase.swift in Sources */,
 				1668B6CC2BBEA0990075E7C6 /* CustomEnvironmentKeys.swift in Sources */,
 				1635B9602BBF2A7400E1E9C5 /* MyAccountScreen.swift in Sources */,
 				16FFA8352BFDD8C80034A137 /* JoinView.swift in Sources */,
@@ -576,6 +587,7 @@
 				16507F8F2C07263D008764AD /* Response.swift in Sources */,
 				1635B9542BBEE91100E1E9C5 /* CategoryScreen.swift in Sources */,
 				160798F02BA787C500672850 /* NavigationBar.swift in Sources */,
+				163C0ABD2C18B32F0004B5F3 /* TokenManager.swift in Sources */,
 				16FFA8372BFDDB070034A137 /* ButtonIcon.swift in Sources */,
 				165962912BA719F40041D9AE /* LayoutSectionView.swift in Sources */,
 				16507F952C07266E008764AD /* Request.swift in Sources */,
